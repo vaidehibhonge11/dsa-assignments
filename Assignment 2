@@ -1,0 +1,221 @@
+#include <iostream>
+using namespace std;
+struct node
+{
+int data;
+node *next;
+};
+
+class SingleLinkedList
+{
+private:
+node *header=NULL;
+public:
+void InsertAtBeginning();
+void Displaylist();
+void InsertAtEnd();
+void DeleteFirst();
+void DeleteLast();
+void InsertAtPosition();
+void DeleteAtPosition();
+
+};
+void SingleLinkedList::InsertAtBeginning()
+{
+node *newnode;
+newnode=new node();
+cout<<"\nEnter the data part of the node\n"<<endl;
+int n;
+cin>>n;
+newnode->data=n;
+newnode->next=header;
+header=newnode;
+}
+void SingleLinkedList::InsertAtEnd()
+{
+Node *newnode;
+newnode=new Node();
+cout<<"\nEnter the data part of the node\n"<<endl;
+int n;
+cin>>n;
+newwnode->data=n;
+newnode->next=NULL;
+if(header==NULL)
+{
+header=newnode;
+}
+else
+{
+Node *temp;
+temp=header;
+while(temp->next!=NULL)
+{
+temp=temp->next;
+}
+temp->next=newnode;
+
+}
+
+}
+void SingleLinkedList::DeleteFirst()
+{
+header=header->next;
+
+}
+void SingleLinkedList::DeleteLast()
+{
+if(header!=NULL)
+{
+Node *temp;
+Node *temp1;
+temp=header->next;
+temp1=header;
+while(temp->next!=NULL)
+{
+temp1=temp;
+temp=temp->next;
+}
+delete temp;
+temp1->next=NULL;
+}
+else
+cout<<"\nYou haven't Entered Any element\n";
+}
+void SingleLinkedList::InsertAtPosition()
+{
+Node *temp;
+int count=0;
+cout<<"\nEnter At which Position You want to insert\n";
+int n;
+cin>>n;
+temp=header;
+while(temp!=NULL)
+{
+temp=temp->next;
+count++;
+}
+if(n>count)
+{
+cout<<"\n You cannot add element at"<<n<<"! As only"<<count<<"elements are in the list\n";
+
+}
+else if(n==1)
+{
+InsertAtBeginning();
+}
+else
+{
+Node *newnode;
+Node *prenode;
+newnode= new Node();
+cout<<"\nEnter data Part of the Node\n";
+int p;
+cin>>p;
+newnode->data=p;
+Node *temp=header;
+for(int i=0;i<n-2;i++)
+{
+temp=temp->next;
+}
+newnode->next=temp->next;
+temp->next=newnode;
+}
+}
+void SingleLinkedList::DeleteAtPosition()
+{
+Node *temp;
+int count=0;
+temp=header;
+while(temp!=NULL)
+{
+temp=temp->next;
+count++;
+}
+int n;
+if(n>count)
+{
+cout<<"\n You cannot delete element at"<<n<<"! As only"<<count<<"elements are in the list\n";
+}
+else
+{
+temp=header;
+for(int i=0;i<n-2;i++)
+{
+temp=temp->n;
+}
+temp->next=temp->next->next;
+}
+}
+void SingleLinkedList::Displaylist()
+{
+Node *temp;
+temp=header;
+while(temp!=NULL)
+{
+cout<<temp->data<<"\t";
+temp=temp->next;
+}
+}
+int main() {
+SingleLinkedList s;
+int p=0;
+while(p!=-1)
+{
+cout<<"\nEnter 1 to insert node at beginning\n";
+cout<<"\nEnter 2 to insert node at end\n";
+cout<<"\nEnter 3 to delete node at beginning\n";
+cout<<"\nEnter 4 to delete node at end\n";
+cout<<"\nEnter 5 to insert node at position\n";
+cout<<"\nEnter 6 to delete node at position\n";
+cout<<"\nEmter 7 to display\n";
+cout<<"\nEmter 8 to exit\n";
+cout<<"\nEmter your choice\n";
+int n;
+cin>>n;
+switch(n)
+{
+case 1:
+{
+s.InsertAtBeginning();
+}
+break;
+case 2:
+{
+s.InsertAtEnd();
+}
+break;
+case 3:
+{
+s.DeleteLast();
+}
+break;
+case 4:
+{
+s.DeleteLast();
+}
+break;
+case 5:
+{
+s.InsertAtPosition();
+}
+break;
+case 6:
+{
+s.DeleteAtPosition();
+}
+break;
+case 7:
+{
+s.Displaylist();
+}
+break;
+case 8:
+{
+cout<<"\nThank You\n";
+p=-1;
+}
+break;
+}
+}
+return 0;
+}
