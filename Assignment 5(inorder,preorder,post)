@@ -1,0 +1,58 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+struct node
+{
+    int data;
+    node *left;
+    node *right;
+};
+
+  node* newnode(int data)
+{
+ node *temp= new node();
+ temp->data= data;
+ temp->left=NULL;
+ temp->right=NULL;
+ return temp;
+}
+void inorder( struct node* node)
+{
+    if(node==0)
+    return;
+    inorder(node->left);
+    cout<<node->data<<"->";
+    inorder(node->right);
+    //cout<<node->data<<" ";
+}
+void preorder(struct node* node)
+{
+    if(node==0)
+    return;
+    //preorder(node->root);
+    cout<<node->data<<"->";
+    preorder(node->left);
+    preorder(node->right);
+}
+void postorder(struct node* node)
+{
+    if(node==NULL)
+    return;
+    postorder(node->left);
+    postorder(node->right);
+    cout<<node->data<<"->";
+}
+int main() {
+    struct node* root= newnode(1);
+    root->left=newnode(5);
+    root->right=newnode(7);
+    root->right->left=newnode(12);
+    root->right->right=newnode(9);
+    cout<<"\nInorder Traversal:\n";
+    inorder(root);
+    cout<<"\nPreorder Traversal\n";
+    preorder(root);
+    cout<<"\nPostorder Traversal\n";
+    postorder(root);
+    return 0;
+}
